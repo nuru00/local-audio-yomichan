@@ -255,7 +255,7 @@ def backfill_jmdict_forms_rows(conn: sqlite3.Connection, group: ExpressionGroup,
     group_reading = group["reading"]
     for expression in group["expressions"]:
         kanji = expression["kanji"]
-        reading = expression.get("reading", group_reading)
+        reading = expression.get("override_reading", group_reading)
         meta_list.append(ExpressionMeta(kanji, reading))
 
     # this could be done slightly more efficiently with a group query, but
